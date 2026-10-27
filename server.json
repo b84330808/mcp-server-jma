@@ -1,0 +1,24 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.b84330808/mcp-server-jma",
+  "title": "Japan Meteorological Agency (JMA)",
+  "description": "Japan weather forecasts, warnings, earthquakes, tsunami and volcano alerts from JMA (気象庁). No key.",
+  "version": "0.1.0",
+  "repository": {
+    "url": "https://github.com/b84330808/mcp-server-jma",
+    "source": "github"
+  },
+  "websiteUrl": "https://github.com/b84330808/mcp-server-jma#readme",
+  "packages": [
+    {
+      "registryType": "npm",
+      "registryBaseUrl": "https://registry.npmjs.org",
+      "identifier": "mcp-server-jma",
+      "version": "0.1.0",
+      "runtimeHint": "npx",
+      "transport": {
+        "type": "stdio"
+      }
+    }
+  ]
+}

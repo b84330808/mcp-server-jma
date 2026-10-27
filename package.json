@@ -1,0 +1,84 @@
+{
+  "name": "mcp-server-jma",
+  "version": "0.1.0",
+  "description": "An MCP server for Japan Meteorological Agency (気象庁) public bosai data: forecasts, warnings, earthquakes, tsunami and volcano information. No API key required.",
+  "main": "dist/index.js",
+  "bin": {
+    "mcp-server-jma": "dist/index.js"
+  },
+  "mcpName": "io.github.b84330808/mcp-server-jma",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "lint": "tsc --noEmit",
+    "smoke": "node scripts/smoke.mjs",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "japan",
+    "jma",
+    "weather",
+    "forecast",
+    "earthquake",
+    "tsunami",
+    "volcano",
+    "気象庁",
+    "claude"
+  ],
+  "author": "b84330808",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/b84330808/mcp-server-jma.git"
+  },
+  "homepage": "https://github.com/b84330808/mcp-server-jma#readme",
+  "bugs": {
+    "url": "https://github.com/b84330808/mcp-server-jma/issues"
+  },
+  "license": "MIT",
+  "type": "commonjs",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "files": [
+    "dist/**/*",
+    "README.md",
+    "README.ja.md",
+    "LICENSE"
+  ],
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.2",
+    "axios": "^1.20.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "@types/node": "^24.19.2",
+    "jest": "^30.5.2",
+    "ts-jest": "^29.4.15",
+    "typescript": "^6.0.3"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "testMatch": [
+      "**/tests/**/*.test.ts"
+    ],
+    "moduleNameMapper": {
+      "^(\\.{1,2}/.*)\\.js$": "$1"
+    },
+    "transform": {
+      "^.+\\.tsx?$": [
+        "ts-jest",
+        {
+          "tsconfig": "tsconfig.test.json"
+        }
+      ]
+    },
+    "collectCoverageFrom": [
+      "src/**/*.ts"
+    ]
+  }
+}
