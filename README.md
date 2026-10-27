@@ -327,18 +327,18 @@ Add this to `claude_desktop_config.json`
   "mcpServers": {
     "jma": {
       "command": "npx",
-      "args": ["-y", "github:b84330808/mcp-server-jma"]
+      "args": ["-y", "https://github.com/b84330808/mcp-server-jma/releases/download/v0.1.0/mcp-server-jma-0.1.0.tgz"]
     }
   }
 }
 ```
 
-Restart Claude Desktop. Once the package is on npm, `"args": ["-y", "mcp-server-jma"]` works too.
+Restart Claude Desktop. The URL is the `npm pack` tarball attached to the [v0.1.0 release](https://github.com/b84330808/mcp-server-jma/releases/tag/v0.1.0); `npx` installs it and its runtime dependencies. Once the package is on npm, `"args": ["-y", "mcp-server-jma"]` works too. (`npx github:b84330808/mcp-server-jma` does not work: current npm fails on git installs that need a build step.)
 
 ### Claude Code
 
 ```bash
-claude mcp add jma -- npx -y github:b84330808/mcp-server-jma
+claude mcp add jma -- npx -y https://github.com/b84330808/mcp-server-jma/releases/download/v0.1.0/mcp-server-jma-0.1.0.tgz
 ```
 
 ### From source

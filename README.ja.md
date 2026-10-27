@@ -57,18 +57,18 @@
   "mcpServers": {
     "jma": {
       "command": "npx",
-      "args": ["-y", "github:b84330808/mcp-server-jma"]
+      "args": ["-y", "https://github.com/b84330808/mcp-server-jma/releases/download/v0.1.0/mcp-server-jma-0.1.0.tgz"]
     }
   }
 }
 ```
 
-Claude Desktop を再起動してください。npm に公開された後は `"args": ["-y", "mcp-server-jma"]` でも動きます。
+Claude Desktop を再起動してください。URL は [v0.1.0 リリース](https://github.com/b84330808/mcp-server-jma/releases/tag/v0.1.0) に添付した `npm pack` の tarball で、`npx` が本体と実行時の依存をインストールします。npm に公開された後は `"args": ["-y", "mcp-server-jma"]` でも動きます（`npx github:b84330808/mcp-server-jma` は、ビルドが必要な git インストールで現行の npm が失敗するため使えません）。
 
 ### Claude Code
 
 ```bash
-claude mcp add jma -- npx -y github:b84330808/mcp-server-jma
+claude mcp add jma -- npx -y https://github.com/b84330808/mcp-server-jma/releases/download/v0.1.0/mcp-server-jma-0.1.0.tgz
 ```
 
 ### ソースから

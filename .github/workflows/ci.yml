@@ -39,19 +39,27 @@ jobs:
       - name: Test
         run: npm test
 
-  # The README tells users to run `npx -y github:b84330808/mcp-server-jma`
-  # until the package is on npm. Check that this installs, builds via
-  # `prepare`, and answers an MCP initialize request.
-  npx-from-github:
+  # Until the package is on npm, the README installs the `npm pack` tarball
+  # attached to the GitHub release. Check that a packed tarball installs
+  # with npx and answers an MCP initialize request.
+  npx-tarball:
     runs-on: ubuntu-latest
-    if: github.event_name == 'push'
     steps:
+      - uses: actions/checkout@v7
+
       - uses: actions/setup-node@v7
         with:
           node-version: 22.x
+          cache: "npm"
 
-      - name: Install from GitHub and initialize
+      - name: Pack
         run: |
+          npm ci
+          npm pack
+
+      - name: Run the tarball with npx and initialize
+        run: |
+          cd "$RUNNER_TEMP"
           printf '%s\n' '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-06-18","capabilities":{},"clientInfo":{"name":"ci","version":"0"}}}' \
-            | timeout 600 npx -y "github:${{ github.repository }}#${{ github.sha }}" | tee out.txt
+            | timeout 600 npx -y "$GITHUB_WORKSPACE"/mcp-server-jma-*.tgz | tee out.txt
           grep -q '"name":"mcp-server-jma"' out.txt
